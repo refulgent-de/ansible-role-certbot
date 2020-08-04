@@ -22,6 +22,9 @@ certbot_create_command: >-
   --email {{ cert_item.email | default(certbot_admin_email) }}
   -d {{ cert_item.domains | join(',') }}
 
+# Create new certs anyways, replacing possible present ones
+certbot_force_creation: no
+
 certbot_create_standalone_stop_services:
   - nginx
   # - apache
